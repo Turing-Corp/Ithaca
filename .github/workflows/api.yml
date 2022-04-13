@@ -15,3 +15,9 @@ jobs:
       run: pip install -r api/requirements.txt
     - name: Run tests and collect coverage
       run: coverage run --source=api -m pytest
+    - name: Download Codecov uploader
+      run: curl -Os https://uploader.codecov.io/latest/linux/codecov
+    - name: Change owner of Codecov uploader
+      run: chmod +x codecov
+    - name: Run Codecov uploader
+      run: ./codecov
